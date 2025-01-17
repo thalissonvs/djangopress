@@ -1,97 +1,170 @@
-body { 
-    margin:0;
-    padding:0;
-    font-family:helvetica, sans-serif; 
+/* Geral */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f9f9f9;
 }
 
-a { 
-    color:#00abff;
-    text-decoration:none; 
+/* Links */
+a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: #0056b3;
+    text-decoration: underline;
 }
 
-h1 { 
-    font-weight:normal;
-    border-bottom:1px solid #bbb;
-    padding:0 0 10px 0;
+/* Títulos */
+h1 {
+    font-weight: 600;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #222;
 }
 
 h2 {
-    font-weight:normal;
-    margin:30px 0 0;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: #444;
 }
 
-#content { 
-    float:left;
-    width:60%;
-    padding:0 0 0 30px; 
+/* Layout */
+#content {
+    float: left;
+    width: 65%;
+    padding-left: 30px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    margin-right: 0;
 }
 
 #sidebar { 
-    float:right;
-    width:30%;
-    padding:10px;
-    background:#efefef; 
-    height:100%;
+    float: right;
+    width: 25%;
+    padding: 10px;
+    margin: 20px;
+    margin-left: 0;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    height: auto; /* Garante que a altura se ajuste ao conteúdo */
+    text-align: center;
 }
 
-p.date { 
-    color:#ccc;
-    font-family: georgia, serif;
-    font-size: 12px;
-    font-style: italic; 
+/* Parágrafos */
+p.date {
+    color: #888;
+    font-family: 'Georgia', serif;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 5px;
 }
 
+/* Imagens e elementos flutuantes */
 .left {
-    float:left;
-    margin-right:10px;
+    float: left;
+    margin-right: 10px;
+    border-radius: 5px;
+    overflow: hidden;
 }
 
-/* pagination */
-.pagination { 
-    margin:40px 0; 
-    font-weight:bold;
+/* Paginação */
+.pagination {
+    margin: 40px 0;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.pagination a {
+    padding: 8px 12px;
+    background: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+.pagination a:hover {
+    background: #0056b3;
 }
 
-/* forms */
-label { 
-    float:left;
-    clear:both;
-    color:#333;
-    margin-bottom:4px; 
+/* Formulários */
+label {
+    float: left;
+    clear: both;
+    color: #555;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 0.95rem;
 }
-input, textarea { 
-    clear:both;
-    float:left;
-    margin:0 0 10px;
-    background:#ededed;
-    border:0;
-    padding:6px 10px;
-    font-size:12px;
+input,
+textarea {
+    clear: both;
+    float: left;
+    margin: 0 0 15px;
+    background: #f9f9f9;
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    font-size: 1rem;
+    border-radius: 5px;
+    width: 100%;
+    transition: border-color 0.3s ease;
 }
-input[type=submit] {
-    font-weight:bold;
-    background:#00abff;
-    color:#fff;
-    padding:10px 20px;
-    font-size:14px;
-    text-transform:uppercase; 
-}
-.errorlist { 
-    color:#cc0033;
-    float:left;
-    clear:both;
-    padding-left:10px; 
+input:focus,
+textarea:focus {
+    border-color: #007BFF;
+    outline: none;
 }
 
-/* comments */
+input[type="submit"] {
+    font-weight: bold;
+    background: #007BFF;
+    color: #fff;
+    padding: 12px 20px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+input[type="submit"]:hover {
+    background: #0056b3;
+}
+
+/* Erros */
+.errorlist {
+    color: #d9534f;
+    float: left;
+    clear: both;
+    padding-left: 10px;
+    font-size: 0.9rem;
+}
+
+/* Comentários */
 .comment {
-    padding:10px;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .comment:nth-child(even) {
-    background:#efefef;
+    background: #f0f0f0;
 }
 .comment .info {
-    font-weight:bold;
-    font-size:12px;
-    color:#666;
+    font-weight: bold;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 5px;
 }
