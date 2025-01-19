@@ -1,0 +1,50 @@
+{% extends "blog/base.html" %}
+
+{% block title %}Share a post{% endblock %}
+{% block header %}
+<header class="masthead" style="background-image: url('{{ post.image.url }}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="post-heading">
+                    <h1>{{ post.title }}</h1>
+                    <h2 class="subheading">{{ post.subtitle }}</h2>
+                    <span class="meta">
+                        Published {{ post.pub_date }} by {{ post.author }}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+{% block content %}
+    {% if sent %}
+        <h1>E-mail successfully sent</h1>
+        <p>
+        "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
+        </p>
+    {% else %}
+        <h1>Share "{{ post.title }}"</h1>
+        <form method="post">
+            <div class="form-floating">
+                <input id="id_name" type="text" name="name" class="form-control">
+                <label for="id_name">Your name</label>
+            </div>
+            <div class="form-floating">
+                <input id="id_email" type="email" name="email" class="form-control">
+                <label for="id_email">E-mail</label>
+            </div>
+            <div class="form-floating">
+                <input id="id_to" type="email" name="to" class="form-control">
+                <label for="id_to">To</label>
+            </div>
+            <div class="form-floating">
+                <textarea id="id_comments" name="comments" class="form-control" style="height: 12rem"></textarea>
+                <label for="id_comments">Comments</label>
+            </div>
+            {% csrf_token %}
+            <input type="submit" value="Send e-mail">
+        </form>
+    {% endif %}
+{% endblock %}

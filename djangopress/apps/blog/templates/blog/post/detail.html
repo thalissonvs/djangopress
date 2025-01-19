@@ -24,4 +24,7 @@
     <article class="mb-4">
         <p>{{ post.body }}</p>
     </article>
+    <p>
+        <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
+    </p>
 {% endblock %}
