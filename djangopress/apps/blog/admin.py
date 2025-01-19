@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post
+from .models import Comment, Post
 
 
 @admin.register(Post)
@@ -13,3 +13,10 @@ class PostAdmin(admin.ModelAdmin):
     date_hierarchy = 'pub_date'
     ordering = ['status', 'pub_date']
     show_facets = admin.ShowFacets.ALWAYS
+
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['name', 'email', 'post', 'created_at', 'active']
+    list_filter = ['created_at', 'updated_at', 'active']
+    search_fields = ['name', 'email', 'body']
