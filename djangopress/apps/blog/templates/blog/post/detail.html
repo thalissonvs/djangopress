@@ -24,6 +24,18 @@
     <article class="mb-4">
         <p>{{ post.body }}</p>
     </article>
+    {% with comments.count as total_comments %}
+        <h2>
+        {{ total_comments }} comment{{ total_comments|pluralize }}
+        </h2>
+    {% endwith %}
+    {% for comment in comments %}
+        <div class="comment">
+            <p style="font-size: 15px; color: #a2a8ad; margin: 5px 0px">{{ comment.name }}: {{ comment.body }}</p>
+        </div>  
+    {% empty %}
+    {% endfor %}
+    {% include "blog/post/includes/comment_form.html" %}
     <p>
         <a href="{% url 'blog:post_share' post.id %}">Share this post</a>
     </p>

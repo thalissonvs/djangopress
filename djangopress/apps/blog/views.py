@@ -1,4 +1,4 @@
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView
 from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_POST
 from django.core.mail import send_mail
@@ -14,20 +14,26 @@ class PostListView(ListView):
     template_name = 'blog/post/list.html'
 
 
-class PostDetailView(DetailView):
-    model = Post
-    template_name = 'blog/post/detail.html'
-    context_object_name = 'post'
-
-    def get_object(self):
-        return get_object_or_404(
-            Post,
-            status=Post.Status.PUBLISHED,
-            pub_date__year=self.kwargs['year'],
-            pub_date__month=self.kwargs['month'],
-            pub_date__day=self.kwargs['day'],
-            slug=self.kwargs['post']
-        )
+def post_detail(request, year, month, day, post):
+    post = get_object_or_404(
+        Post,
+        status=Post.Status.PUBLISHED,
+        slug=post,
+        pub_date__year=year,
+        pub_date__month=month,
+        pub_date__day=day
+    )
+    comments = post.comments.filter(active=True)
+    form = CommentForm()
+    return render(
+        request,
+        'blog/post/detail.html',
+        {
+            'post': post,
+            'comments': comments,
+            'form': form
+        }
+    )
 
 
 def post_share(request, post_id):

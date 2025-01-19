@@ -1,0 +1,17 @@
+<p><i class="fa-regular fa-comment"></i> Add a new comment </p>
+<form action="{% url "blog:post_comment" post.id %}" method="post">
+    <div class="form-floating">
+        <input id="id_name" type="text" name="name" class="form-control">
+        <label for="id_name"> Name: </label>
+    </div>
+    <div class="form-floating">
+        <input id="id_email" type="email" name="email" class="form-control">
+        <label for="id_email"> Email: </label>
+    </div>
+    <div class="form-floating">
+        <textarea id="id_body" name="body" class="form-control" style="height: 12rem"></textarea>
+        <label for="id_body"> Content: </label>
+    </div>
+    {% csrf_token %}
+    <input type="submit" value="Add comment">
+</form>
