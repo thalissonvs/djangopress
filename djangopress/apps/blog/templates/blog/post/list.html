@@ -20,16 +20,14 @@
 
 {% block content %}
     {% for post in posts %}
-
         <div class="post-preview">
             <a href="{{ post.get_absolute_url }}">
                 <h2 class="post-title">{{ post.title }}</h2>
                 <h3 class="post-subtitle">{{ post.subtitle|truncatewords:30}}</h3>
             </a>
             <p class="post-meta">Published {{ post.pub_date }}</p>
-
         </div>
         <hr class="my-4" />
     {% endfor %}
-    {% include "pagination.html" with page=page_obj %}
+    {% include "blog/pagination.html" with page=page_obj %}
 {% endblock %}
