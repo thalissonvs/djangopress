@@ -14,6 +14,7 @@ class Post(models.Model):
         PUBLISHED = 'PB', 'Published'
 
     title = models.CharField(max_length=250)
+    subtitle = models.CharField(max_length=250, default='')
     slug = models.SlugField(
         max_length=250,
         unique_for_date='pub_date' # now we can't have two posts with the same slug in the same date
@@ -25,6 +26,7 @@ class Post(models.Model):
     )
     body = models.TextField()
     pub_date = models.DateTimeField(default=timezone.now)
+    image = models.ImageField(upload_to='blog/posts/', blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     status = models.CharField(

@@ -1,15 +1,35 @@
 {% extends "blog/base.html" %}
-
+{% load static %}
 {% block title %} DjangoPress {% endblock %}
 
+{% block header %}
+<!-- Page Header-->
+<header class="masthead" style="background-image: url('{% static "images/home-bg.jpg" %}')">
+    <div class="container position-relative px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7">
+                <div class="site-heading">
+                    <h1>DjangoPress</h1>
+                    <span class="subheading">A Complete Blog Using Django</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+{% endblock %}
+
 {% block content %}
-    <h1>DjangoPress</h1>
     {% for post in posts %}
-        <h2>
-            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-        </h2>
-        <p class="date">Published {{ post.pub_date }}</p>
-        {{ post.body|truncatewords:30|linebreaks}}
+
+        <div class="post-preview">
+            <a href="{{ post.get_absolute_url }}">
+                <h2 class="post-title">{{ post.title }}</h2>
+                <h3 class="post-subtitle">{{ post.subtitle|truncatewords:30}}</h3>
+            </a>
+            <p class="post-meta">Published {{ post.pub_date }}</p>
+
+        </div>
+        <hr class="my-4" />
     {% endfor %}
     {% include "pagination.html" with page=page_obj %}
 {% endblock %}
