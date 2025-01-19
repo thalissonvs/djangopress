@@ -25,7 +25,9 @@
         "{{ post.title }}" was successfully sent to {{ form.cleaned_data.to }}.
         </p>
     {% else %}
-        <h1>Share "{{ post.title }}"</h1>
+
+        <h2>Share "{{ post.title }}"</h1>
+
         <form method="post">
             <div class="form-floating">
                 <input id="id_name" type="text" name="name" class="form-control">
